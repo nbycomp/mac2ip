@@ -17,6 +17,6 @@ returns JSON `{ "ip": "1.2.3.4" }`
 returns iPXE string:
 
 ```
-    #!ipxe
-    chain http://drp-hostname/0.0.0.1.ipxe
+#!ipxe
+chain http://drp-hostname/0.0.0.1.ipxe
 ```
