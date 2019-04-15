@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-1. Check environment variables defined in docker-compose
+1. Check environment variables defined in docker-compose and mount point for Postgres
 2. Run `docker-compose up`
 3. The service is accessible on http://localhost:8081
 

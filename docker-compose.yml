@@ -20,4 +20,4 @@ services:
       POSTGRES_USER: my_user
       POSTGRES_PASSWORD: my_pass
     volumes:
-      - ./pg:/var/lib/postgresql
+      - ./data:/var/lib/postgresql/data
