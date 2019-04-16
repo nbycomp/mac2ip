@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	_ "github.com/lib/pq"
@@ -34,17 +35,13 @@ func fetchIP(db *sql.DB, hw net.HardwareAddr) *string {
 	return &ip
 }
 
-func IntToIP(ip uint32) (string, error) {
-	if ip > maxValue {
-		return "", fmt.Errorf("IP value out of range: %v", ip)
+func IntToIP(nn uint32) (string, error) {
+	if nn > maxValue {
+		return "", fmt.Errorf("IP value out of range: %v", nn)
 	}
-
-	result := make(net.IP, 4)
-	result[0] = byte(ip >> 24)
-	result[1] = byte(ip >> 16)
-	result[2] = byte(ip >> 8)
-	result[3] = byte(ip)
-	return result.String(), nil
+	ip := make(net.IP, 4)
+	binary.BigEndian.PutUint32(ip, nn)
+	return ip.String(), nil
 }
 
 func registerDevice(db *sql.DB, hw net.HardwareAddr) *string {
